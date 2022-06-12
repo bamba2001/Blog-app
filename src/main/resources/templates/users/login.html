@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="layout::site-head">
+	<title>Connexion</title>
+</head>
+
+<body>
+	<header th:replace="layout::site-header"></header>
+
+	<h2>Connexion au blog</h2>
+	
+	<div class="container row">
+		<form method="post" th:action="@{/users/login}" class="form col-md-5 col-md-offset-7">
+		  <div class="form-group">
+		  	<label for="userName">Nom d'utilisateur</label>
+		  	<input type="text" id="userName" name="userName" class="form-control"/>
+		  </div><!-- User name -->	  
+		
+		  <div class="form-group">
+		  	<label for="password">Mot de passe</label>
+		  	<input type="password" id="passwordHash" name="passwordHash" class="form-control"/>		  	
+		  </div><!-- Password -->		  
+		
+		  <div class="form-group">
+		  	<input type="submit" class="btn btn-primary pull-right" value="Login"/>
+		  	<a href="register.html" th:href="@{/users/register}">[Aller à l'inscription]</a>
+		  </div><!-- Submit Button -->		  
+		  <div class="form-group alert alert-danger" th:if="${param.error}">Nom d'utilsateur ou mot de passe invalide</div><!-- Error message -->
+		</form>
+		
+	</div>	
+	
+	<footer th:replace="layout::site-footer"></footer>
+</body>
+
+</html>
